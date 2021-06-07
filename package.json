@@ -9,7 +9,10 @@
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "lint": "eslint --ext .ts ."
+    "test": "echo \"Info: no test specified\" && exit 0",
+    "lint": "eslint --ext .ts .",
+    "pre-commit": "yarn lint && yarn test",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": {
@@ -77,6 +80,7 @@
     "eslint": "^7.6.0",
     "eslint-plugin-import": "^2.20.0",
     "fork-ts-checker-webpack-plugin": "^6.0.1",
+    "husky": "^6.0.0",
     "node-loader": "^2.0.0",
     "style-loader": "^2.0.0",
     "ts-loader": "^9.2.2",
