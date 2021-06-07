@@ -30,6 +30,6 @@ import './index.css';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
+import AppBootstrap from './components/AppBootstrap';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<AppBootstrap />, document.getElementById('root'));
