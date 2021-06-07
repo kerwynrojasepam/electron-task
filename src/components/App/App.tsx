@@ -1,5 +1,15 @@
 import * as React from 'react';
 
-const App = () => <div>Hi from react !</div>;
+import AppBar from '../AppBar';
+import Content from '../Content';
+import TabBar from '../TabBar';
+
+const App = () => (
+  <>
+    <AppBar />
+    <TabBar />
+    <Content />
+  </>
+);
 
 export default App;
