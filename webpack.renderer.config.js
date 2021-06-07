@@ -5,7 +5,7 @@ const plugins = require('./webpack.plugins');
 
 rules.push({
   test: /\.css$/,
-  use: [{ loader: 'style-loader' }, { loader: 'css-loader' }],
+  use: [{ loader: 'style-loader' }, { loader: 'css-loader' }]
 });
 
 module.exports = {
@@ -15,5 +15,5 @@ module.exports = {
   plugins: plugins,
   resolve: {
     extensions: ['.js', '.ts', '.jsx', '.tsx', '.css']
-  },
+  }
 };

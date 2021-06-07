@@ -28,6 +28,9 @@
           ".tsx"
         ]
       }
+    },
+    "react": {
+      "version": "detect"
     }
   },
   "rules": {

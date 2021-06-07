@@ -10,7 +10,7 @@
     "make": "electron-forge make",
     "publish": "electron-forge publish",
     "test": "echo \"Info: no test specified\" && exit 0",
-    "lint": "eslint --ext .ts .",
+    "lint": "eslint --ext .ts,.tsx,.js,.jsx .",
     "pre-commit": "yarn lint && yarn test",
     "prepare": "husky install"
   },
