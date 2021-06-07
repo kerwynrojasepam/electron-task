@@ -10,7 +10,12 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
-    "plugin:import/typescript"
+    "plugin:import/typescript",
+    "plugin:react/recommended"
+  ],
+  "plugins": [
+    "filenames",
+    "react-hooks"
   ],
   "parser": "@typescript-eslint/parser",
   "settings": {
@@ -24,5 +29,50 @@
         ]
       }
     }
+  },
+  "rules": {
+    "filenames/match-exported": "warn",
+
+    "max-len": ["warn", {
+      "code": 200
+    }],
+    "quotes": ["error", "single"],
+    "prefer-arrow-callback": "error",
+    "arrow-parens": ["warn", "as-needed"],
+    "object-curly-spacing": ["error", "always"],
+    "comma-dangle":["error", "never"],
+
+    "react/jsx-sort-props": ["error", {
+      "callbacksLast": true,
+      "ignoreCase": true
+    }],
+    "react/sort-prop-types": ["error", {
+      "callbacksLast": true,
+      "sortShapeProp": true,
+      "ignoreCase": true
+    }],
+    "react/no-multi-comp": ["error", {
+      "ignoreStateless": true
+    }],
+
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": ["warn", {
+      // "additionalHooks": "(useStableMemo|useSkipFirstRenderEffect)"
+    }],
+
+    // disable the rule for all files
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/semi": ["error", "always"],
+    "@typescript-eslint/no-unused-vars": ["error", { "vars": "all", "args": "all" }],
+    "@typescript-eslint/member-delimiter-style": ["error", {
+      "multiline": {
+          "delimiter": "semi",
+          "requireLast": true
+      },
+      "singleline": {
+          "delimiter": "semi",
+          "requireLast": false
+      }
+    }]
   }
 }
