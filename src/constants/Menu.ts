@@ -1,0 +1,21 @@
+export const TABS = [
+  'Screening',
+  'Research',
+  'Optimization Cases',
+  'Holdings',
+  'Models',
+  'Position Rolling',
+  'Monthly Rebalancing',
+  'Orders',
+  'Monthly Rebalancing',
+  'Orders',
+  'Targets',
+  'Screening',
+  'Research',
+  'Optimization Cases',
+  'Holdings',
+  'Models',
+  'Position Rolling',
+  'Monthly Rebalancing',
+  'Orders'
+];
