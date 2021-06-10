@@ -1,7 +1,5 @@
-import useStyles from './TabBar.styles';
-
 import React, { useCallback, useRef } from 'react';
-import AppBar from '@material-ui/core/AppBar';
+import Paper from '@material-ui/core/Paper';
 import TabScrollButton, { TabScrollButtonProps } from '@material-ui/core/TabScrollButton';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -13,7 +11,6 @@ import { TABS } from '../../constants/Menu';
 const tabs = TABS.map((tabText, index) => <Tab key={index} label={tabText} />);
 
 const TabBar = () => {
-  const classes = useStyles();
   const scrollLeftProps = useRef<TabScrollButtonProps>();
   // const [selectedTabIndex, setSelectedTabIndex] = React.useState(0);
   const [tabContextState, setTabContextState] = useTabContext();
@@ -47,22 +44,19 @@ const TabBar = () => {
   }, []);
 
   return (
-    <div className={classes.root}>
-      <AppBar color="default" position="static">
-        <Tabs
-          indicatorColor="primary"
-          ScrollButtonComponent={ScrollButtons}
-          scrollButtons="on"
-          textColor="primary"
-          value={selectedTabIndex}
-          variant="scrollable"
-          onChange={handleChange}
-        >
-          {tabs}
-        </Tabs>
-      </AppBar>
-
-    </div>
+    <Paper color="default" square>
+      <Tabs
+        indicatorColor="primary"
+        ScrollButtonComponent={ScrollButtons}
+        scrollButtons="on"
+        textColor="primary"
+        value={selectedTabIndex}
+        variant="scrollable"
+        onChange={handleChange}
+      >
+        {tabs}
+      </Tabs>
+    </Paper>
   );
 };
 

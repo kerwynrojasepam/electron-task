@@ -11,35 +11,34 @@ import PersonRoundedIcon from '@material-ui/icons/PersonRounded';
 import SearchIcon from '@material-ui/icons/Search';
 import SettingsRoundedIcon from '@material-ui/icons/SettingsRounded';
 
+import TabBar from '../TabBar';
+
 const AppBar = () => {
   const classes = useStyles();
 
   return (
-    <div>
-      <AppBarBase elevation={0} position="static">
-        <Toolbar className={classes.toolbar}>
-          <Typography variant="h4">
-            APP
-          </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput
-              }}
-            />
-          </div>
-          <div>
-            <HelpRoundedIcon className={classes.icon} />
-            <SettingsRoundedIcon className={classes.icon} />
-            <PersonRoundedIcon className={classes.icon} />
-          </div>
-        </Toolbar>
-      </AppBarBase>
-    </div>
+    <AppBarBase elevation={0} position="fixed">
+      <Toolbar className={classes.toolbar}>
+        <Typography variant="h4">
+          APP
+        </Typography>
+        <div className={classes.search}>
+          <InputBase
+            classes={{
+              root: classes.inputRoot
+            }}
+            fullWidth
+            startAdornment={<SearchIcon />}
+          />
+        </div>
+        <div>
+          <HelpRoundedIcon className={classes.icon} />
+          <SettingsRoundedIcon className={classes.icon} />
+          <PersonRoundedIcon className={classes.icon} />
+        </div>
+      </Toolbar>
+      <TabBar />
+    </AppBarBase>
   );
 };
 
