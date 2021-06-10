@@ -54,9 +54,12 @@
               "config": "./webpack.renderer.config.js",
               "entryPoints": [
                 {
-                  "html": "./src/index.html",
-                  "js": "./src/renderer.tsx",
-                  "name": "main_window"
+                  "html": "./src/renderer/index.html",
+                  "js": "./src/renderer/renderer.tsx",
+                  "name": "main_window",
+                  "preload": {
+                    "js": "./src/renderer/preload.ts"
+                  }
                 }
               ]
             }
@@ -92,6 +95,7 @@
     "typescript": "^4.0.2"
   },
   "dependencies": {
+    "@electron/remote": "^1.1.0",
     "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.11.2",
     "electron-squirrel-startup": "^1.0.0",

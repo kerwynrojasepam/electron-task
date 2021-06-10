@@ -2,6 +2,8 @@ import useStyles from './AppBar.styles';
 
 import React from 'react';
 import AppBarBase from '@material-ui/core/AppBar';
+import Box from '@material-ui/core/Box';
+import IconButton from '@material-ui/core/IconButton';
 import InputBase from '@material-ui/core/InputBase';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -22,7 +24,7 @@ const AppBar = () => {
         <Typography variant="h4">
           APP
         </Typography>
-        <div className={classes.search}>
+        <Box className={classes.search}>
           <InputBase
             classes={{
               root: classes.inputRoot
@@ -30,12 +32,18 @@ const AppBar = () => {
             fullWidth
             startAdornment={<SearchIcon />}
           />
-        </div>
-        <div>
-          <HelpRoundedIcon className={classes.icon} />
-          <SettingsRoundedIcon className={classes.icon} />
-          <PersonRoundedIcon className={classes.icon} />
-        </div>
+        </Box>
+        <Box>
+          <IconButton color="inherit">
+            <HelpRoundedIcon />
+          </IconButton>
+          <IconButton color="inherit">
+            <SettingsRoundedIcon />
+          </IconButton>
+          <IconButton color="inherit">
+            <PersonRoundedIcon />
+          </IconButton>
+        </Box>
       </Toolbar>
       <TabBar />
     </AppBarBase>

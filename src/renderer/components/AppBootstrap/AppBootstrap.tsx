@@ -1,3 +1,5 @@
+import '../../globalTypes';
+
 import React from 'react';
 
 import App from '../App';
