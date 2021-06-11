@@ -6,6 +6,8 @@ export type OnLoadWindowInitialDataListener = (data: NewWindowInitialData) => vo
 interface IAppRuntime {
   openContextMenu: (type: Type, data?: Data) => void;
   onLoadNewWindowInitialData: (listener: OnLoadWindowInitialDataListener) => () => void;
+  crashWindow: () => void;
+  hangWindow: () => void;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

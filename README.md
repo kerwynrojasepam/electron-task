@@ -38,3 +38,14 @@ Package the application into a platform specific format and put the result in `o
 Make distributables for the application based on the `forge` config and put the result in `out` folder.
 
     yarn make
+
+---
+<br>
+
+## Edge cases
+
+### Crash window
+Left click on tab `Holdings` (#4) will cause the window to crash
+
+### Hang window
+Left click on tab `Models` (#5) will cause the window to hang

@@ -1,4 +1,4 @@
-import { BrowserWindow } from 'electron';
+import { BrowserWindow, dialog } from 'electron';
 import isDev from 'electron-is-dev';
 
 import { ContextInitialData } from '../types/IPCChannels';
@@ -9,6 +9,50 @@ import { clearNewWindowInitialData, getNewWindowInitialData } from './store';
 // whether you're running in development or production).
 declare const MAIN_WINDOW_WEBPACK_ENTRY: string;
 declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string;
+
+const handleWindowEvents = (newWindow: BrowserWindow) => {
+  newWindow.webContents.on('did-finish-load', () => {
+    newWindow.show();
+    newWindow.focus();
+
+    const initialData = getNewWindowInitialData();
+    clearNewWindowInitialData();
+    newWindow.webContents.send(ContextInitialData.loadNewWindowInitialData, initialData);
+  });
+
+  newWindow.webContents.on('render-process-gone', async () => {
+    const options = {
+      type: 'info',
+      title: 'Process crashed',
+      message: 'This process has crashed',
+      buttons: ['Reload', 'Close']
+    };
+    const buttonClickedIndex = (await dialog.showMessageBox(newWindow, options)).response;
+
+    if (buttonClickedIndex === 0) {
+      newWindow.reload();
+    } else {
+      newWindow.close();
+    }
+  });
+
+  // TODO: Not detecting process.hang
+  newWindow.webContents.on('unresponsive', async () => {
+    const options = {
+      type: 'info',
+      title: 'Process is not responsive',
+      message: 'This process is not responding...',
+      buttons: ['Reload', 'Close']
+    };
+    const buttonClickedIndex = (await dialog.showMessageBox(newWindow, options)).response;
+
+    if (buttonClickedIndex === 0) {
+      newWindow.reload();
+    } else {
+      newWindow.close();
+    }
+  });
+};
 
 const createWindow = async () => {
   const newWindow = new BrowserWindow({
@@ -22,14 +66,7 @@ const createWindow = async () => {
   });
   newWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
 
-  newWindow.webContents.on('did-finish-load', () => {
-    newWindow.show();
-    newWindow.focus();
-
-    const initialData = getNewWindowInitialData();
-    clearNewWindowInitialData();
-    newWindow.webContents.send(ContextInitialData.loadNewWindowInitialData, initialData);
-  });
+  handleWindowEvents(newWindow);
 
   if (isDev) {
     // Open the DevTools in development only

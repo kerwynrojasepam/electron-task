@@ -19,6 +19,8 @@ contextBridge.exposeInMainWorld(
       return () => {
         ipcRenderer.removeListener(ContextInitialData.loadNewWindowInitialData, subscription);
       };
-    }
+    },
+    crashWindow: () => process.crash(),
+    hangWindow: () => process.hang()
   }
 );

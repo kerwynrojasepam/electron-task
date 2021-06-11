@@ -19,3 +19,6 @@ export const TABS = [
   'Monthly Rebalancing',
   'Orders'
 ];
+
+export const HANG_TAB = 3;
+export const CRASH_TAB = 4;
