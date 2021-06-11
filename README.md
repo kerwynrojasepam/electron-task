@@ -45,7 +45,7 @@ Make distributables for the application based on the `forge` config and put the 
 ## Edge cases
 
 ### Crash window
-Left click on tab `Holdings` (#4) will cause the window to crash
+Left click on tab `Holdings` (#4) will cause the window to become unresponsive
 
 ### Hang window
-Left click on tab `Models` (#5) will cause the window to hang
+Left click on tab `Models` (#5) will cause the window to crash
