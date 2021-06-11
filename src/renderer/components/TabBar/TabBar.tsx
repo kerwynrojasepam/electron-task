@@ -13,7 +13,6 @@ const tabs = TABS.map((tabText, index) => <TabItem key={index} label={tabText} /
 
 const TabBar = () => {
   const scrollLeftProps = useRef<TabScrollButtonProps>();
-  // const [selectedTabIndex, setSelectedTabIndex] = React.useState(0);
   const [tabContextState, setTabContextState] = useTabContext();
 
   const { selectedTabIndex } = tabContextState;

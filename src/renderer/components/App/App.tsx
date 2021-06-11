@@ -1,15 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import AppBar from '../AppBar';
 import Content from '../Content';
 
-import { TabContextProvider } from '../../context/TabContext';
+import useTabContext from '../../hooks/useTabContext';
 
-const App = () => (
-  <TabContextProvider>
-    <AppBar />
-    <Content />
-  </TabContextProvider>
-);
+import AppRuntime from '../../utils/AppRuntime';
+
+const App = () => {
+  const [, setTabContextState] = useTabContext();
+
+  useEffect(() => {
+    const unsubscribe = AppRuntime.onLoadNewWindowInitialData(({ recentlyOpenedTab }) => {
+      if (recentlyOpenedTab != null) {
+        setTabContextState({ selectedTabIndex: recentlyOpenedTab });
+      }
+    });
+
+    return unsubscribe;
+  }, [setTabContextState]);
+
+  return (
+    <>
+      <AppBar />
+      <Content />
+    </>
+  );
+};
 
 export default App;
