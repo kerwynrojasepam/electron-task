@@ -1,4 +1,5 @@
 import { BrowserWindow } from 'electron';
+import isDev from 'electron-is-dev';
 
 import { ContextInitialData } from '../types/IPCChannels';
 import { clearNewWindowInitialData, getNewWindowInitialData } from './store';
@@ -11,6 +12,7 @@ declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string;
 
 const createWindow = async () => {
   const newWindow = new BrowserWindow({
+    autoHideMenuBar: true,
     show: false,
     height: 600,
     width: 800,
@@ -29,8 +31,10 @@ const createWindow = async () => {
     newWindow.webContents.send(ContextInitialData.loadNewWindowInitialData, initialData);
   });
 
-  // Open the DevTools.
-  newWindow.webContents.openDevTools();
+  if (isDev) {
+    // Open the DevTools in development only
+    newWindow.webContents.openDevTools();
+  }
 
   return newWindow;
 };

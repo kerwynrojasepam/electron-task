@@ -58,7 +58,6 @@ export const generateContextMenus = () => {
 
   //Webview is being shown here as a window type
   ipcMain.on(ContextMenuChannel.tab, (event: IpcMainEvent, data?: Data) => {
-    console.log('TAB', data);
     contextMenuHandler(tabMenu, event.sender, event, data);
   });
 };
